@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/Plack/static/css/main.b4946e42.chunk.css",
-    "main.js": "/Plack/static/js/main.f191a34d.chunk.js",
-    "main.js.map": "/Plack/static/js/main.f191a34d.chunk.js.map",
+    "main.js": "/Plack/static/js/main.1a66d2fd.chunk.js",
+    "main.js.map": "/Plack/static/js/main.1a66d2fd.chunk.js.map",
     "runtime-main.js": "/Plack/static/js/runtime-main.ba9c51b2.js",
     "runtime-main.js.map": "/Plack/static/js/runtime-main.ba9c51b2.js.map",
     "static/css/2.da8ab40c.chunk.css": "/Plack/static/css/2.da8ab40c.chunk.css",
-    "static/js/2.c6d95cbd.chunk.js": "/Plack/static/js/2.c6d95cbd.chunk.js",
-    "static/js/2.c6d95cbd.chunk.js.map": "/Plack/static/js/2.c6d95cbd.chunk.js.map",
+    "static/js/2.09db5e23.chunk.js": "/Plack/static/js/2.09db5e23.chunk.js",
+    "static/js/2.09db5e23.chunk.js.map": "/Plack/static/js/2.09db5e23.chunk.js.map",
     "index.html": "/Plack/index.html",
-    "precache-manifest.7116f8ef56494b42f866af3a5ecc44cd.js": "/Plack/precache-manifest.7116f8ef56494b42f866af3a5ecc44cd.js",
+    "precache-manifest.70229d847b79594d337b2d9469975d2f.js": "/Plack/precache-manifest.70229d847b79594d337b2d9469975d2f.js",
     "service-worker.js": "/Plack/service-worker.js",
     "static/css/2.da8ab40c.chunk.css.map": "/Plack/static/css/2.da8ab40c.chunk.css.map",
     "static/css/main.b4946e42.chunk.css.map": "/Plack/static/css/main.b4946e42.chunk.css.map",
-    "static/js/2.c6d95cbd.chunk.js.LICENSE.txt": "/Plack/static/js/2.c6d95cbd.chunk.js.LICENSE.txt",
+    "static/js/2.09db5e23.chunk.js.LICENSE.txt": "/Plack/static/js/2.09db5e23.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/Plack/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.ba9c51b2.js",
     "static/css/2.da8ab40c.chunk.css",
-    "static/js/2.c6d95cbd.chunk.js",
+    "static/js/2.09db5e23.chunk.js",
     "static/css/main.b4946e42.chunk.css",
-    "static/js/main.f191a34d.chunk.js"
+    "static/js/main.1a66d2fd.chunk.js"
   ]
 }

@@ -1,19 +1,21 @@
 {
   "homepage": "http://Matasj98.github.io/Plack",
-  "name": "react-slack-clone",
+  "name": "plack",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^5.3.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "firebase": "^7.9.1",
     "gh-pages": "^2.2.0",
     "md5": "^2.2.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-loader-spinner": "^3.1.5",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "react-redux": "^7.2.0",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^3.4.0",
-    "redux": "^4.0.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
@@ -22,10 +24,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

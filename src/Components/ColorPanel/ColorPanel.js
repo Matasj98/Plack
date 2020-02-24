@@ -7,13 +7,13 @@ const ColorPanel = () => {
       as={Menu}
       icon="labeled"
       inverted
-    //   animation="overlay"
+      //   animation="overlay"
       vertical
       visible
       width="very thin"
     >
-        <Divider />
-        <Button icon="add" size="small" color="blue" />
+      <Divider />
+      <Button icon="add" size="small" color="blue" />
     </Sidebar>
   );
 };

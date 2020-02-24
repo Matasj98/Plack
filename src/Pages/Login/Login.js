@@ -21,31 +21,33 @@ const Login = () => {
   });
 
   const handleChange = e => {
-    setForm(({
+    setForm({
       ...form,
       [e.target.name]: e.target.value
-    }));
+    });
   };
 
   const handleSubmit = e => {
     if (isFormValid(form)) {
       e.preventDefault();
-      setForm(prev=>({ ...prev, loading: true, errors: "" }));
+      setForm(prev => ({ ...prev, loading: true, errors: "" }));
       firebase
         .auth()
         .signInWithEmailAndPassword(form.email, form.password)
         .then(signedUser => {
-          setForm(prev=>({ ...prev, loading: false }));
+          setForm(prev => ({ ...prev, loading: false }));
         })
         .catch(err => {
           console.log(err);
-          setForm(prev=>({ ...prev, loading: false, errors: err.message }));
+          setForm(prev => ({ ...prev, loading: false, errors: err.message }));
         });
     }
   };
 
   const isFormValid = ({ email, password }) =>
-    email && password ? true : setForm(prev=>({ ...prev, errors: "Fill all fields" }));
+    email && password
+      ? true
+      : setForm(prev => ({ ...prev, errors: "Fill all fields" }));
 
   const errorMessage = <Message color="red">{form.errors}</Message>;
 

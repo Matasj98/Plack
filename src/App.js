@@ -13,7 +13,7 @@ class App extends React.Component {
     //firebase is mounted, and this function is always active
     firebase.auth().onAuthStateChanged(user => {
       if (user !== null) {
-        this.props.setUser(user)
+        this.props.setUser(user);
         this.props.history.push("/");
       } else {
         this.props.setUser(null);

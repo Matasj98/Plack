@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { resetApp } from "../../Store/Actions/resetApp";
 import {
   Grid,
   GridColumn,
@@ -11,11 +13,12 @@ import {
 } from "semantic-ui-react";
 import firebase from "../../firebase";
 
-const handleSignout = () => {
-  firebase.auth().signOut();
-};
-
 const UserPanel = ({ userData }) => {
+  const dispatch = useDispatch();
+  const handleSignout = () => {
+    firebase.auth().signOut();
+    dispatch(resetApp());
+  };
   const dropdownOptions = [
     {
       key: "user",

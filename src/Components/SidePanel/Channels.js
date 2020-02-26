@@ -11,7 +11,7 @@ const Channels = ({ userData }) => {
     channelDetails: "",
     channels: [],
     channelsRef: firebase.database().ref("channels"),
-    // firstLoad: true
+    // firstLoad: true,
     activeChannel: null
   });
 

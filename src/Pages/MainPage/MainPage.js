@@ -15,7 +15,7 @@ const MainPage = () => {
       : { user: "" }
   );
   return (
-    <Grid columns="equal" className="u-heigth100vh">
+    <Grid columns="equal">
       {/* <GridColumn> */}
       <ColorPanel />
       {/* </GridColumn> */}

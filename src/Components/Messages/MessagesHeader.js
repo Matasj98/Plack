@@ -1,17 +1,16 @@
 import React from "react";
 import { Header, Segment, Input, Icon } from "semantic-ui-react";
 
-const MessagesHeader = () => {
+const MessagesHeader = ({ channelName, userAmount }) => {
   return (
     <Segment clearing>
       <Header fluid="true" as="h2" floated="left">
         <span>
-          Channel
+          {channelName}
           <Icon name="star outline" color="black" />
         </span>
-        <Header.Subheader>2 Users</Header.Subheader>
+        <Header.Subheader>{userAmount}</Header.Subheader>
       </Header>
-      {/* channel title */}
       <Header floated="right">
         <Input
           size="mini"

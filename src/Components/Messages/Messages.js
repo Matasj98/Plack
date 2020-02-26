@@ -55,9 +55,26 @@ const Messages = ({ channel, user }) => {
     }
   };
 
+  const displayChannelName = channel => (channel ? channel.name : "");
+
+  const usersAmount = messages => {
+    const users = messages.reduce((acc, message) => {
+      if (!acc.includes(message.user.name)) {
+        acc.push(message.user.name);
+      }
+      return acc;
+    }, []);
+    return users.length === 1
+      ? `${users.length} user`
+      : `${users.length} users`;
+  };
+
   return (
     <React.Fragment>
-      <MessagesHeader />
+      <MessagesHeader
+        channelName={displayChannelName(channel)}
+        userAmount={usersAmount(data.messages)}
+      />
       <Segment className="messages">
         <Comment.Group>{displayMessages(data.messages)}</Comment.Group>
       </Segment>

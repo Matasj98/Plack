@@ -3,4 +3,4 @@
 .firebase
 .firebaserc
 firebase.json
-/src/firebase.js/
+firebase.js

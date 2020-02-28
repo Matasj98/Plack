@@ -1,1 +1,1 @@
-No firebase.js file, need to add your own, because of sensitive data.
+No firebase.js file, need to create your own in src folder. Use firebase documentation for that.

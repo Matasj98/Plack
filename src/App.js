@@ -7,6 +7,7 @@ import Login from "./Pages/Login/Login";
 import MainPage from "./Pages/MainPage/MainPage";
 import Spinner from "./Components/Spinner/Spiner";
 import { setUser } from "./Store/Actions/setUser";
+import { handleOnlineStatus } from "./Helpers/handleOnlineStatus";
 
 class App extends React.Component {
   componentDidMount() {
@@ -14,6 +15,10 @@ class App extends React.Component {
     firebase.auth().onAuthStateChanged(user => {
       if (user !== null) {
         this.props.setUser(user);
+        handleOnlineStatus(user.uid, "add");
+        window.addEventListener("beforeunload", () => {
+          handleOnlineStatus(user.uid);
+        });
         this.props.history.push("/plackApp");
       } else {
         this.props.setUser(null);

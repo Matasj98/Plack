@@ -35,6 +35,7 @@ const Login = () => {
         .auth()
         .signInWithEmailAndPassword(form.email, form.password)
         .then(signedUser => {
+          // handleOnlineStatus(signedUser.user.uid, "add");
           setForm(prev => ({ ...prev, loading: false }));
         })
         .catch(err => {

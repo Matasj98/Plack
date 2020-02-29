@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { resetApp } from "../../Store/Actions/resetApp";
+import { handleOnlineStatus } from "../../Helpers/handleOnlineStatus";
 import {
   Grid,
   GridColumn,
@@ -15,10 +16,13 @@ import firebase from "../../firebase";
 
 const UserPanel = ({ userData }) => {
   const dispatch = useDispatch();
+
   const handleSignout = () => {
     firebase.auth().signOut();
+    handleOnlineStatus(userData.uid);
     dispatch(resetApp());
   };
+
   const dropdownOptions = [
     {
       key: "user",

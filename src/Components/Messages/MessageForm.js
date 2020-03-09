@@ -100,10 +100,14 @@ class MessageForm extends React.Component {
 
   sendMessage = () => {
     const { messageRef, channel } = this.props;
+    const setChannel = this.props.isPrivate
+      ? `${channel.id}/messages`
+      : channel.id;
+
     if (this.state.message.length > 0) {
       this.setState({ loading: true, error: "" });
       messageRef
-        .child(channel.id)
+        .child(setChannel)
         .push()
         .set(this.createMessage())
         .then(() => {

@@ -1,5 +1,6 @@
 const initialState = {
-  channel: null
+  channel: null,
+  isPrivate: false
 };
 
 export const channel = (state = initialState, action) => {
@@ -7,9 +8,9 @@ export const channel = (state = initialState, action) => {
     case "SET_CHANNEL":
       return {
         ...state,
-        channel: action.channel
+        channel: action.channel,
+        isPrivate: action.isPrivate
       };
-
     default:
       return state;
   }

@@ -1,12 +1,16 @@
 import React from "react";
 import firebase from "../../firebase";
+import { connect } from "react-redux";
+import { setChannel } from "../../Store/Actions/setChannel";
 import { Menu, Icon, Image } from "semantic-ui-react";
 
 class DirectMessages extends React.Component {
   state = {
     userRef: firebase.database().ref("users"),
+    channelsRef: firebase.database().ref("privateMessages"),
     users: [],
-    presenceRef: firebase.database().ref("presence")
+    presenceRef: firebase.database().ref("presence"),
+    activeChannel: null
   };
 
   componentDidMount() {
@@ -31,6 +35,7 @@ class DirectMessages extends React.Component {
   setUsers = userId => {
     let loadedUsers = [];
     this.state.userRef.on("child_added", snap => {
+      // this.createChannel(this.setChannelId(userId, snap.key));
       if (userId !== snap.key) {
         let user = snap.val();
         user["uid"] = snap.key;
@@ -42,21 +47,18 @@ class DirectMessages extends React.Component {
 
     this.state.presenceRef.on("child_added", snap => {
       if (userId !== snap.key) {
-        console.log("added");
         this.addStatusToUser(snap.key);
       }
     });
 
     this.state.presenceRef.on("child_removed", snap => {
       if (userId !== snap.key) {
-        console.log("remove");
         this.addStatusToUser(snap.key, false);
       }
     });
   };
 
   addStatusToUser = (userId, connected = true) => {
-    console.log(this.state.users);
     const updateUsers = this.state.users.reduce((acc, user) => {
       if (user.uid === userId) {
         user["status"] = `${connected ? "online" : "offline"}`;
@@ -66,18 +68,46 @@ class DirectMessages extends React.Component {
     this.setState({ users: updateUsers });
   };
 
+  setChannel = user => {
+    this.setState({ activeChannel: user.uid });
+    const channelId = this.setChannelId(this.props.userData.uid, user.uid);
+    const channel = {
+      id: channelId,
+      name: user.name
+    };
+    this.createChannel(channelId, channel);
+    this.props.setChannel(channel, true);
+  };
+
+  createChannel = (channelId, channel) => {
+    this.state.channelsRef
+      .child(channelId)
+      .update(channel)
+      .catch(err => console.log(err));
+  };
+
+  setChannelId = (userId, friendId) => {
+    return userId > friendId
+      ? `${userId}/${friendId}`
+      : `${friendId}/${userId}`;
+  };
+
   displayUsers = users => {
     return users.map(user => (
-      <Menu.Item key={user.uid}>
+      <Menu.Item
+        key={user.uid}
+        onClick={() => this.setChannel(user)}
+        active={this.state.activeChannel === user.uid}
+      >
         <span>
           <Image src={user.avatar} avatar />
           {user.name}
         </span>
-        {console.log(user.status)}
         <Icon name="rss" color={user.status === "offline" ? "red" : "green"} />
       </Menu.Item>
     ));
   };
+
   render() {
     return (
       <Menu.Menu>
@@ -92,4 +122,4 @@ class DirectMessages extends React.Component {
   }
 }
 
-export default DirectMessages;
+export default connect(null, { setChannel })(DirectMessages);

@@ -5,11 +5,12 @@ import MessagesHeader from "./MessagesHeader";
 import MessageForm from "./MessageForm";
 import SingleMessage from "./SingleMessage";
 
-const Messages = ({ channel, user }) => {
+const Messages = ({ channel, user, isPrivate }) => {
   const [data, setData] = useState({
     messages: [],
     messageLoading: null,
     messageRef: firebase.database().ref("messages"),
+    privateMessageRef: firebase.database().ref("privateMessages"),
     listeners: [],
     searchTerm: ""
   });
@@ -63,12 +64,14 @@ const Messages = ({ channel, user }) => {
   };
 
   const addMessageListener = channelId => {
+    const setChannel = isPrivate ? `${channelId}/messages` : channelId;
+    const setMessageRef = isPrivate ? data.privateMessageRef : data.messageRef;
     setData(prev => ({
       ...prev,
       messages: []
     }));
     let loadedMessages = [];
-    data.messageRef.child(channelId).on("child_added", snap => {
+    setMessageRef.child(setChannel).on("child_added", snap => {
       loadedMessages.push(snap.val());
       setData(prev => ({
         ...prev,
@@ -76,7 +79,8 @@ const Messages = ({ channel, user }) => {
         messageLoading: false
       }));
     });
-    addToListeners(channelId, data.messageRef, "child_added");
+
+    addToListeners(setChannel, setMessageRef, "child_added");
   };
 
   const displayMessages = messages => {
@@ -134,7 +138,12 @@ const Messages = ({ channel, user }) => {
           <div ref={messagesEndRef} />
         </Comment.Group>
       </Segment>
-      <MessageForm messageRef={data.messageRef} channel={channel} user={user} />
+      <MessageForm
+        messageRef={isPrivate ? data.privateMessageRef : data.messageRef}
+        isPrivate={isPrivate}
+        channel={channel}
+        user={user}
+      />
     </React.Fragment>
   );
 };

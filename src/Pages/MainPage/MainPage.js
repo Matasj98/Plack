@@ -11,7 +11,11 @@ import "../../App.css";
 const MainPage = () => {
   const data = useSelector(state =>
     state.user.user !== null
-      ? { user: state.user.user, channel: state.channel.channel }
+      ? {
+          user: state.user.user,
+          channel: state.channel.channel,
+          isPrivate: state.channel.isPrivate
+        }
       : { user: "" }
   );
   return (
@@ -23,7 +27,11 @@ const MainPage = () => {
       <SidePanel userData={data.user} />
       {/* </GridColumn> */}
       <GridColumn style={{ marginLeft: "320px" }}>
-        <Messages channel={data.channel} user={data.user} />
+        <Messages
+          channel={data.channel}
+          user={data.user}
+          isPrivate={data.isPrivate}
+        />
       </GridColumn>
       <GridColumn width={4}>
         <MetaPanel />

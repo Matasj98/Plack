@@ -24,7 +24,7 @@ deploy:
     git add .
     git -c user.name='Matasj98' -c user.email='jari.matas@gmail.com' commit -m init
     # Make sure to make the output quiet, or else the API token will leak!
-    # This works because the API key can replace your password.
+    # This works because the API key can replace your passwrd.
     git push -f -q https://Matasj98:$GITHUB_KEY@github.com/Matasj98/Plack-gh-pages gh-pages &>/dev/null
     cd "$TRAVIS_BUILD_DIR"
   fi

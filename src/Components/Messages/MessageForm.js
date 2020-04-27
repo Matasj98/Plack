@@ -162,7 +162,7 @@ class MessageForm extends React.Component {
           <Button
             color="red"
             content="Upload Media"
-            disabled={uploadState === "uploading" ? true : false}
+            disabled={uploadState === "uploading"}
             labelPosition="right"
             icon="cloud upload"
             onClick={this.openModal}

@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/storage';
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBa643TjTtPD0rnjdOfuFLpYyzDdsqr0Iw",
     authDomain: "plack-23141.firebaseapp.com",
     databaseURL: "https://plack-23141.firebaseio.com",
@@ -12,8 +12,8 @@ var firebaseConfig = {
     messagingSenderId: "360318459062",
     appId: "1:360318459062:web:a7d366336084667dacda17",
     measurementId: "G-E16F9YZVBR"
-  };
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
   export default firebase;

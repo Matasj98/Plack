@@ -41,7 +41,15 @@ const Register = () => {
         errors: "Passwords do not match or password to short"
       });
       return false;
-    } else return true;
+    }
+    else if (!isValidUsername(form)) {
+        setForm({
+            ...form,
+            errors: "Username length has to be more than 3 symbols"
+        });
+        return false;
+    }
+    else return true;
   };
 
   const formIsNotEmpty = ({ username, password, email }) => {
@@ -50,7 +58,11 @@ const Register = () => {
 
   const passwordsMatch = ({ password, passwordConfirm }) => {
     return password === passwordConfirm && password.length >= 6;
-  };
+    };
+
+    const isValidUsername = ({ username }) => {
+        return username.length > 3;
+    };
 
   const handleSubmit = e => {
     if (isFormValid()) {

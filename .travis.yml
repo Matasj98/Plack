@@ -14,3 +14,9 @@ deploy:
   local_dir: build
   on:
     branch: master
+notifications:
+  webhooks:
+    urls:
+      - https://api.ghostinspector.com/v1/suites/5ea7eb74c4243452906711e7/execute/?apiKey=edfe23ab5d4550d8ce824da111fee9ef87ad21fe
+    on_success: always
+    on_failure: never
